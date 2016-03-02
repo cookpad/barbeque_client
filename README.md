@@ -1,41 +1,41 @@
-# Barbeque
+# barbeque-ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/barbeque`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Barbeque client for Ruby.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
+```rb
 gem 'barbeque'
 ```
 
-And then execute:
+And create "config/initializers/barbeque.rb" and edit it like:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install barbeque
+```rb
+Barbeque.configure do |config|
+  config.application   = 'cookpad'
+  config.default_queue = 'default'
+  config.api_endpoint  = 'http://barbeque.example.com'
+end
+```
 
 ## Usage
+### Enqueuing a job
 
-TODO: Write usage instructions here
+```rb
+response = Barbeque.enqueue(
+  job:     'NotifyAuthor',       # @param [String] job     - Job name to enqueue.
+  message: { user_id: 7553989 }, # @param [Object] message - An object which is serializable as JSON.
+  queue:   'default',            # @param optional [String] queue - A queue name to enqueue a job.
+  environment: 'production',     # @param optional [String] environment - Optional meta data.
+)
+response.message_id #=> "7f62a27d-6181-4b66-95be-ac6066c77cf3"
+```
 
-## Development
+### Polling the job's status
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/barbeque.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+```rb
+message_id = '7f62a27d-6181-4b66-95be-ac6066c77cf3'
+Barbeque.status(message_id) #=> :success
+```
