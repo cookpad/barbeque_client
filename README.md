@@ -16,7 +16,7 @@ And create "config/initializers/barbeque.rb" and edit it like:
 Barbeque.configure do |config|
   config.application   = 'cookpad'
   config.default_queue = 'default'
-  config.api_endpoint  = 'http://barbeque.example.com'
+  config.endpoint      = 'https://barbeque.example.com'
 end
 ```
 
