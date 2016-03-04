@@ -5,7 +5,7 @@ require 'barbeque/version'
 module Barbeque
   class << self
     def configure
-      yield config if block_given?
+      yield config
     end
 
     def config
