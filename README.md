@@ -38,5 +38,5 @@ execution.status #=> "pending"
 
 ```rb
 execution_id = 123
-Barbeque.status(execution_id) #=> "success"
+Barbeque.status(id: execution_id) #=> "success"
 ```
