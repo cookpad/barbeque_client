@@ -12,7 +12,7 @@ describe Barbeque do
           application
           default_queue
           endpoint
-        ].map { |attribute| Barbeque.config.send(attribute) }
+        ].map { |attribute| Barbeque.config.public_send(attribute) }
       }.from(
         [nil, 'default', nil]
       ).to(
