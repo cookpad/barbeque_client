@@ -1,6 +1,7 @@
 require 'barbeque/configuration'
 require 'barbeque/client'
 require 'barbeque/version'
+require 'barbeque/railtie'
 
 module Barbeque
   class << self
