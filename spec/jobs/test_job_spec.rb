@@ -7,7 +7,7 @@ describe TestJob do
       c.endpoint    = endpoint
     end
   end
-  let(:response) { double('Faraday::Response', body: double('Hashie::Mash', id: id) ) }
+  let(:response) { double('Faraday::Response', body: Hashie::Mash.new(id: id)) }
   let(:client) { double('Barbeque::Client') }
   let(:args) { ['hello world'] }
   let(:id) { 100 }
