@@ -1,7 +1,14 @@
 require 'barbeque/configuration'
 require 'barbeque/client'
 require 'barbeque/version'
-require 'barbeque/railtie'
+require 'barbeque/executor'
+
+begin
+  require 'rails'
+rescue LoadError
+else
+  require 'barbeque/railtie'
+end
 
 module Barbeque
   class << self
