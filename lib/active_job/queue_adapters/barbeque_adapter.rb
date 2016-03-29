@@ -9,7 +9,7 @@ module ActiveJob
             queue:       job.queue_name,
             environment: Rails.env,
           )
-          job.job_id = execution.id
+          job.job_id = execution.message_id
         end
 
         def enqueue_at(job, timestamp)

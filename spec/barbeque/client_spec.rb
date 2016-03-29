@@ -63,16 +63,16 @@ describe Barbeque::Client do
   end
 
   describe '#execution' do
-    let(:id) { 1 }
+    let(:message_id) { SecureRandom.uuid }
     let(:result) { double('GarageClient::Response', response: response) }
-    let(:response) { double('Faraday::Response', body: { id: 1, status: 'success' }) }
+    let(:response) { double('Faraday::Response', body: { message_id: message_id, status: 'success' }) }
 
     before do
-      allow(garage_client).to receive(:get).with("/v1/job_executions/#{id}").and_return(result)
+      allow(garage_client).to receive(:get).with("/v1/job_executions/#{message_id}").and_return(result)
     end
 
     it 'returns an execution' do
-      expect(client.execution(id: id)).to eq(response)
+      expect(client.execution(message_id: message_id)).to eq(response)
     end
 
     context 'when barbeque responds with error' do
@@ -84,7 +84,7 @@ describe Barbeque::Client do
 
       it 'raises GarageClient::Error' do
         expect {
-          client.execution(id: id)
+          client.execution(message_id: message_id)
         }.to raise_error(GarageClient::Error)
       end
     end

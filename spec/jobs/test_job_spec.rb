@@ -7,10 +7,10 @@ describe TestJob do
       c.endpoint    = endpoint
     end
   end
-  let(:response) { double('Faraday::Response', body: Hashie::Mash.new(id: id)) }
+  let(:response) { double('Faraday::Response', body: Hashie::Mash.new(message_id: message_id)) }
   let(:client) { double('Barbeque::Client') }
   let(:args) { ['hello world'] }
-  let(:id) { 100 }
+  let(:message_id) { SecureRandom.uuid }
 
   before do
     allow(Barbeque).to receive(:client).and_return(client)
@@ -29,9 +29,9 @@ describe TestJob do
       TestJob.perform_later(*args)
     end
 
-    it 'sets execution id of barbeque' do
+    it 'sets message_id of barbeque execution' do
       job = TestJob.perform_later(*args)
-      expect(job.job_id).to eq(id)
+      expect(job.job_id).to eq(message_id)
     end
 
     context 'with timestamp set' do

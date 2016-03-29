@@ -26,10 +26,10 @@ module Barbeque
       result.response
     end
 
-    # @param [Integer] id - Job execution's id to check status
+    # @param [String] message_id - Job execution's message_id to check status
     # @param [Faraday::Response]
-    def execution(id:)
-      result = garage_client.get("/v1/job_executions/#{id}")
+    def execution(message_id:)
+      result = garage_client.get("/v1/job_executions/#{message_id}")
       result.response
     end
 

@@ -24,7 +24,7 @@ module Barbeque
     # @param  [Object] message - An object which is serializable as JSON.
     # @param  optional [String] queue - A queue name to enqueue a job.
     # @param  optional [String] environment - Optional meta data.
-    # @return [Hashie::Mash] resonse - { id: Integer, status: String }
+    # @return [Hashie::Mash] resonse - { message_id: String, status: String }
     def enqueue(job:, message:, queue: nil, environment: nil)
       response = client.create_execution(
         job:         job,
@@ -35,10 +35,10 @@ module Barbeque
       response.body
     end
 
-    # @param  [Integer] id     - Job execution's id to check status
-    # @return [String]  status - Job execution's status like "success", "pending", "failure", ...
-    def status(id:)
-      response = client.execution(id: id)
+    # @param  [String] message_id - Job execution's message_id to check status
+    # @return [String] status     - Job execution's status like "success", "pending", "failure", ...
+    def status(message_id:)
+      response = client.execution(message_id: message_id)
       response.body.status
     end
 

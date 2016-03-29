@@ -30,13 +30,13 @@ execution = Barbeque.enqueue(
   queue:   'default',            # @param optional [String] queue - A queue name to enqueue a job.
   environment: 'production',     # @param optional [String] environment - Optional meta data.
 )
-execution.id     #=> 123
-execution.status #=> "pending"
+execution.message_id #=> "a3c653c1-335e-4d4d-a6f9-eb91c0253d02"
+execution.status     #=> "pending"
 ```
 
 ### Polling the job's status
 
 ```rb
-execution_id = 123
-Barbeque.status(id: execution_id) #=> "success"
+message_id = "a3c653c1-335e-4d4d-a6f9-eb91c0253d02"
+Barbeque.status(message_id: message_id) #=> "success"
 ```
