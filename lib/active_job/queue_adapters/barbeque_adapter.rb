@@ -4,10 +4,9 @@ module ActiveJob
       class << self
         def enqueue(job)
           execution = Barbeque.enqueue(
-            job:         job.class.to_s,
-            message:     job.arguments,
-            queue:       job.queue_name,
-            environment: Rails.env,
+            job:     job.class.to_s,
+            message: job.arguments,
+            queue:   job.queue_name,
           )
           job.job_id = execution.message_id
         end

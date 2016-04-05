@@ -12,16 +12,14 @@ module Barbeque
     # @param [String] job     - Job name to enqueue.
     # @param [Object] message - An object which is serializable as JSON.
     # @param optional [String] queue - A queue name to enqueue a job.
-    # @param optional [String] environment - Optional meta data.
     # @param [Faraday::Response]
-    def create_execution(job:, message:, queue: nil, environment: nil)
+    def create_execution(job:, message:, queue: nil)
       params = {
         application: @application,
         job:         job,
         message:     message.to_json,
         queue:       queue || @default_queue,
       }
-      params[:environment] = environment if environment
       result = garage_client.post('/v1/job_executions', params)
       result.response
     end

@@ -27,9 +27,8 @@ describe Barbeque::Client do
         client.create_execution(job: job, message: message)
       end
 
-      context 'given custom queue and environment' do
+      context 'given custom queue' do
         let(:queue) { 'bargain' }
-        let(:environment) { 'production' }
 
         it 'enqueues with specified parameters' do
           expect(garage_client).to receive(:post).with(
@@ -38,9 +37,8 @@ describe Barbeque::Client do
             job:         job,
             message:     message.to_json,
             queue:       queue,
-            environment: environment,
           ).and_return(result)
-          client.create_execution(job: job, message: message, queue: queue, environment: environment)
+          client.create_execution(job: job, message: message, queue: queue)
         end
       end
     end

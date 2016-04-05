@@ -24,7 +24,6 @@ describe TestJob do
         job:         'TestJob',
         message:     args,
         queue:       'test_queue',
-        environment: Rails.env,
       ).and_return(response)
       TestJob.perform_later(*args)
     end
