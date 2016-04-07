@@ -7,4 +7,10 @@ namespace :barbeque do
     )
     executor.run
   end
+
+  desc 'Start a fake barbeque API for development'
+  task :runner do
+    require 'barbeque/runner'
+    Barbeque::Runner.run!
+  end
 end
