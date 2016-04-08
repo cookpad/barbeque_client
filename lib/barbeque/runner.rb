@@ -5,6 +5,8 @@ require 'json'
 module Barbeque
   # Fake API to run job locally
   class Runner < Sinatra::Base
+    set :port, ENV['PORT'] || 3003
+
     post '/v1/job_executions' do
       params = JSON.parse(request.body.read)
       spawn(
