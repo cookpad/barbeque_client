@@ -60,6 +60,47 @@ describe Barbeque::Client do
     end
   end
 
+  describe '#retry_execution' do
+    let(:message_id) { SecureRandom.uuid }
+    let(:result) { double('GarageClient::Response', response: double('Faraday::Response')) }
+
+    it 'retries a specified message' do
+      expect(garage_client).to receive(:post).with(
+        "/v1/job_executions/#{message_id}/retries",
+        delay_seconds: 0,
+      ).and_return(result)
+      client.retry_execution(message_id: message_id)
+    end
+
+    context 'given delay_seconds' do
+      let(:delay_seconds) { 900 }
+
+      it 'retries a specified message with delay' do
+        expect(garage_client).to receive(:post).with(
+          "/v1/job_executions/#{message_id}/retries",
+          delay_seconds: delay_seconds,
+        ).and_return(result)
+        client.retry_execution(message_id: message_id, delay_seconds: delay_seconds)
+      end
+    end
+
+    context 'given invalid delay_seconds' do
+      let(:delay_seconds) { 901 }
+
+      before do
+        allow(garage_client).to receive(:post).and_raise(
+          GarageClient::BadRequest.new('{"status":400,"error":"invalid_parameter"}')
+        )
+      end
+
+      it 'raises GarageClient::Error' do
+        expect {
+          client.retry_execution(message_id: message_id, delay_seconds: delay_seconds)
+        }.to raise_error(GarageClient::Error)
+      end
+    end
+  end
+
   describe '#execution' do
     let(:message_id) { SecureRandom.uuid }
     let(:result) { double('GarageClient::Response', response: response) }

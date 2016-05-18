@@ -24,8 +24,19 @@ module Barbeque
       result.response
     end
 
+    # @param [String] message_id     - Job execution's message_id to retry
+    # @param [Integer] delay_seconds - Retry delay in seconds. Maximum is 900s.
+    # @return [Faraday::Response]
+    def retry_execution(message_id:, delay_seconds: 0)
+      result = garage_client.post(
+        "/v1/job_executions/#{message_id}/retries",
+        delay_seconds: delay_seconds,
+      )
+      result.response
+    end
+
     # @param [String] message_id - Job execution's message_id to check status
-    # @param [Faraday::Response]
+    # @return [Faraday::Response]
     def execution(message_id:)
       result = garage_client.get("/v1/job_executions/#{message_id}")
       result.response
