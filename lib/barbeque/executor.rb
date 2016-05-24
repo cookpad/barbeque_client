@@ -10,7 +10,7 @@ module Barbeque
     end
 
     def run
-      @job_class.new.perform(*@message)
+      @job_class.perform_now(*@message)
     end
   end
 end

@@ -41,4 +41,43 @@ describe TestJob do
       end
     end
   end
+
+  describe '.perform_now' do
+    let(:retry_count) { 0 }
+    let(:test_job) { TestJob.new.tap { |job| job.job_id = message_id } }
+    let(:exponential_retry) { Barbeque::ExponentialRetry.new(retry_count) }
+    let(:message_id) { SecureRandom.uuid }
+
+    before do
+      allow(TestJob).to receive(:new).and_return(test_job)
+      allow(test_job).to receive(:perform).and_raise(error)
+      allow(Barbeque::ExponentialRetry).to receive(:new).with(retry_count).and_return(exponential_retry)
+      ENV['BARBEQUE_RETRY_COUNT'] = retry_count.to_s
+    end
+
+    context 'when retryable error raised' do
+      let(:error) { Timeout::Error }
+
+      it 'retries with barbeque' do
+        expect(exponential_retry).to receive(:retry).with(message_id)
+        TestJob.perform_now
+      end
+
+      context 'when already retried limit count times' do
+        let(:retry_count) { 1 }
+
+        it 'raises error' do
+          expect { TestJob.perform_now }.to raise_error(error)
+        end
+      end
+    end
+
+    context 'when not-retryable error raised' do
+      let(:error) { NotImplementedError }
+
+      it 'raises error' do
+        expect { TestJob.perform_now }.to raise_error(error)
+      end
+    end
+  end
 end

@@ -40,8 +40,6 @@ module Barbeque
       response.body.status
     end
 
-    private
-
     def client
       @client ||= Client.new(
         application:   config.application,

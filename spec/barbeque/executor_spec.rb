@@ -5,14 +5,9 @@ describe Barbeque::Executor do
     let(:executor) do
       Barbeque::Executor.new(job: job, message: JSON.dump(args))
     end
-    let(:test_job) { double('TestJob') }
-
-    before do
-      allow(TestJob).to receive(:new).and_return(test_job)
-    end
 
     it 'calls #perform of given job' do
-      expect(test_job).to receive(:perform).with(*args)
+      expect(TestJob).to receive(:perform_now).with(*args)
       executor.run
     end
   end
