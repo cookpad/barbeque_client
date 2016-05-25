@@ -8,7 +8,7 @@ module Barbeque
 
     module ClassMethods
       def barbeque_retry(limit:, retryable_exceptions: nil)
-        exceptions = Array.wrap(retryable_exceptions || Exception)
+        exceptions = Array.wrap(retryable_exceptions || StandardError)
 
         rescue_from *exceptions do |exception|
           unless ENV['BARBEQUE_RETRY_COUNT']
