@@ -20,7 +20,7 @@ module Barbeque
     end
 
     post '/v1/job_executions/:message_id/retries' do
-      # TODO: Implement caching message and retry it
+      # TODO: Save message on "/v1/job_executions" and stop skipping retry.
       puts "Received retry: #{params['message_id']} (retry skipped)"
 
       content_type :json
