@@ -21,9 +21,9 @@ describe TestJob do
   describe '.perform_later' do
     it 'enqueues a job to barbeque' do
       expect(client).to receive(:create_execution).with(
-        job:         'TestJob',
-        message:     args,
-        queue:       'test_queue',
+        job:     'TestJob',
+        message: args,
+        queue:   'test_queue',
       ).and_return(response)
       TestJob.perform_later(*args)
     end

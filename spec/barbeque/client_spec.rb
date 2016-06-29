@@ -18,10 +18,10 @@ describe Barbeque::Client do
 
       it 'enqueues a job to barbeque' do
         expect(garage_client).to receive(:post).with(
-          '/v1/job_executions',
+          '/v2/job_executions',
           application: application,
           job:         job,
-          message:     message.to_json,
+          message:     message,
           queue:       default_queue,
         ).and_return(result)
         client.create_execution(job: job, message: message)
@@ -32,10 +32,10 @@ describe Barbeque::Client do
 
         it 'enqueues with specified parameters' do
           expect(garage_client).to receive(:post).with(
-            '/v1/job_executions',
+            '/v2/job_executions',
             application: application,
             job:         job,
-            message:     message.to_json,
+            message:     message,
             queue:       queue,
           ).and_return(result)
           client.create_execution(job: job, message: message, queue: queue)

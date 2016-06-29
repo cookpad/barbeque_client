@@ -12,15 +12,15 @@ module Barbeque
     # @param [String] job     - Job name to enqueue.
     # @param [Object] message - An object which is serializable as JSON.
     # @param optional [String] queue - A queue name to enqueue a job.
-    # @param [Faraday::Response]
+    # @return [Faraday::Response]
     def create_execution(job:, message:, queue: nil)
       params = {
         application: @application,
         job:         job,
-        message:     message.to_json,
+        message:     message,
         queue:       queue || @default_queue,
       }
-      result = garage_client.post('/v1/job_executions', params)
+      result = garage_client.post('/v2/job_executions', params)
       result.response
     end
 
@@ -46,8 +46,7 @@ module Barbeque
 
     def garage_client
       @garage_client ||= GarageClient::Client.new(
-        endpoint:    @endpoint,
-        path_prefix: '/v1',
+        endpoint: @endpoint,
       )
     end
   end
