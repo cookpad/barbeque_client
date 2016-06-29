@@ -47,6 +47,7 @@ module Barbeque
     def garage_client
       @garage_client ||= GarageClient::Client.new(
         endpoint: @endpoint,
+        path_prefix: '/',
       )
     end
   end
