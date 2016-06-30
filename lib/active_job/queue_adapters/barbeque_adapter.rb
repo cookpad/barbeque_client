@@ -5,7 +5,7 @@ module ActiveJob
         def enqueue(job)
           execution = Barbeque.enqueue(
             job:     job.class.to_s,
-            message: job.arguments,
+            message: ActiveJob::Arguments.serialize(job.arguments),
             queue:   job.queue_name,
           )
           job.job_id = execution.message_id
