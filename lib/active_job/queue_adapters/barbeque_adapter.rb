@@ -1,7 +1,13 @@
 module ActiveJob
   module QueueAdapters
     class BarbequeAdapter
+      # Interface for ActiveJob 5.0
+      def enqueue(job)
+        BarbequeAdapter.enqueue(job)
+      end
+
       class << self
+        # Interface for ActiveJob 4.2
         def enqueue(job)
           execution = Barbeque.enqueue(
             job:     job.class.to_s,
