@@ -1,4 +1,4 @@
-module Barbeque
+module BarbequeClient
   class Configuration
     def initialize
       @default_queue = 'default'

@@ -1,4 +1,4 @@
-describe Barbeque::Client do
+describe BarbequeClient::Client do
   let(:client) { described_class.new(application: application, default_queue: default_queue, endpoint: endpoint) }
   let(:application) { 'cookpad' }
   let(:default_queue) { 'main' }

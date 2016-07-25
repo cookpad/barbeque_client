@@ -1,6 +1,6 @@
 require 'json'
 
-module Barbeque
+module BarbequeClient
   class Executor
     # @param [String] job - Job class name
     # @param [String] message - JSON-serialized object

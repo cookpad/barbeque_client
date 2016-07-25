@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'securerandom'
 require 'json'
 
-module Barbeque
+module BarbequeClient
   # Fake API to run job locally
   class Runner < Sinatra::Base
     set :port, ENV['PORT'] || 3003

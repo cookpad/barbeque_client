@@ -1,6 +1,6 @@
 require 'barbeque/exponential_retry'
 
-module Barbeque
+module BarbequeClient
   module Retryable
     extend ActiveSupport::Concern
 

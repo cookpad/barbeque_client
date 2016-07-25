@@ -1,7 +1,7 @@
 namespace :barbeque do
   desc 'Execute ActiveJob task with barbeque envs'
   task execute: :environment do
-    Barbeque::Executor.new(
+    BarbequeClient::Executor.new(
       job:        ENV['BARBEQUE_JOB'],
       message:    ENV['BARBEQUE_MESSAGE'],
       message_id: ENV['BARBEQUE_MESSAGE_ID'],
@@ -12,6 +12,6 @@ namespace :barbeque do
   desc 'Start a fake barbeque API for development'
   task :runner do
     require 'barbeque/runner'
-    Barbeque::Runner.run!
+    BarbequeClient::Runner.run!
   end
 end

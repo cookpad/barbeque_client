@@ -1,4 +1,4 @@
-module Barbeque
+module BarbequeClient
   class ExponentialRetry
     MAX_DELAY_SECONDS = (ENV['BARBEQUE_MAX_RETRY_DELAY'] || 900).to_i
 
@@ -15,7 +15,7 @@ module Barbeque
 
     # @param [String] message_id
     def retry(message_id)
-      Barbeque.client.retry_execution(
+      BarbequeClient.client.retry_execution(
         message_id:    message_id,
         delay_seconds: [delay_seconds, MAX_DELAY_SECONDS].min,
       )

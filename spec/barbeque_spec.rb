@@ -1,8 +1,8 @@
-describe Barbeque do
+describe BarbequeClient do
   describe '.configure' do
     it 'updates .config' do
       expect {
-        Barbeque.configure do |c|
+        BarbequeClient.configure do |c|
           c.application   = 'blog'
           c.default_queue = 'blog-default'
           c.endpoint      = 'https://barbeque.example.com'
@@ -12,7 +12,7 @@ describe Barbeque do
           application
           default_queue
           endpoint
-        ].map { |attribute| Barbeque.config.public_send(attribute) }
+        ].map { |attribute| BarbequeClient.config.public_send(attribute) }
       }.from(
         [nil, 'default', nil]
       ).to(

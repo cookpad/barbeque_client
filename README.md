@@ -1,6 +1,6 @@
-# barbeque-ruby
+# BarbequeClient
 
-Barbeque client for Ruby.
+BarbequeClient client for Ruby.
 
 ## Installation
 
@@ -13,7 +13,7 @@ gem 'barbeque'
 And create "config/initializers/barbeque.rb" and edit it like:
 
 ```rb
-Barbeque.configure do |config|
+BarbequeClient.configure do |config|
   config.application   = 'cookpad'
   config.default_queue = 'default'
   config.endpoint      = 'https://barbeque.example.com'
@@ -24,7 +24,7 @@ end
 ### Enqueuing a job
 
 ```rb
-execution = Barbeque.enqueue(
+execution = BarbequeClient.enqueue(
   job:     'NotifyAuthor',       # @param [String] job     - Job name to enqueue.
   message: { user_id: 7553989 }, # @param [Object] message - An object which is serializable as JSON.
   queue:   'default',            # @param optional [String] queue - A queue name to enqueue a job.
@@ -37,5 +37,5 @@ execution.status     #=> "pending"
 
 ```rb
 message_id = "a3c653c1-335e-4d4d-a6f9-eb91c0253d02"
-Barbeque.status(message_id: message_id) #=> "success"
+BarbequeClient.status(message_id: message_id) #=> "success"
 ```

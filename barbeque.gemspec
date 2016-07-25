@@ -5,7 +5,7 @@ require 'barbeque/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'barbeque'
-  spec.version       = Barbeque::VERSION
+  spec.version       = BarbequeClient::VERSION
   spec.authors       = ['Takashi Kokubun']
   spec.email         = ['takashi-kokubun@cookpad.com']
 

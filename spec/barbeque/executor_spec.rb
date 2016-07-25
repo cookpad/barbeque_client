@@ -1,11 +1,11 @@
-describe Barbeque::Executor do
+describe BarbequeClient::Executor do
   describe '#run' do
     let(:job) { 'TestJob' }
     let(:message_id) { SecureRandom.uuid }
     let(:args) { ['foo', 'bar'] }
     let(:queue_name) { 'blog' }
     let(:executor) do
-      Barbeque::Executor.new(
+      BarbequeClient::Executor.new(
         job:        job,
         message:    JSON.dump(args),
         message_id: message_id,

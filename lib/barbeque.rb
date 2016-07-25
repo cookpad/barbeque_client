@@ -10,7 +10,7 @@ else
   require 'barbeque/railtie'
 end
 
-module Barbeque
+module BarbequeClient
   class << self
     def configure
       yield config

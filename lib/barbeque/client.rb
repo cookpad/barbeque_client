@@ -1,7 +1,7 @@
 require 'garage_client'
 require 'json'
 
-module Barbeque
+module BarbequeClient
   class Client
     def initialize(application:, default_queue:, endpoint:)
       @application   = application

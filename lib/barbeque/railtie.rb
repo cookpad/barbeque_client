@@ -3,7 +3,7 @@ ActiveSupport.on_load(:active_job) do
   require 'barbeque/retryable'
 end
 
-module Barbeque
+module BarbequeClient
   class Railtie < Rails::Railtie
     rake_tasks do
       load 'barbeque/tasks/execute.rake'

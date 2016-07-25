@@ -9,7 +9,7 @@ module ActiveJob
       class << self
         # Interface for ActiveJob 4.2
         def enqueue(job)
-          execution = Barbeque.enqueue(
+          execution = BarbequeClient.enqueue(
             job:     job.class.to_s,
             message: ActiveJob::Arguments.serialize(job.arguments),
             queue:   job.queue_name,
