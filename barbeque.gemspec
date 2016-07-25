@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'barbeque_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'barbeque'
+  spec.name          = 'barbeque_client'
   spec.version       = BarbequeClient::VERSION
   spec.authors       = ['Takashi Kokubun']
   spec.email         = ['takashi-kokubun@cookpad.com']

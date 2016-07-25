@@ -7,7 +7,7 @@ BarbequeClient client for Ruby.
 Add this line to your application's Gemfile:
 
 ```rb
-gem 'barbeque'
+gem 'barbeque_client'
 ```
 
 And create "config/initializers/barbeque.rb" and edit it like:
