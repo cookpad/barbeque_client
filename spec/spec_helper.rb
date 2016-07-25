@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'barbeque'
+require 'barbeque_client'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('./dummy/config/environment', __dir__)

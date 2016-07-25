@@ -1,13 +1,13 @@
-require 'barbeque/configuration'
-require 'barbeque/client'
-require 'barbeque/version'
-require 'barbeque/executor'
+require 'barbeque_client/configuration'
+require 'barbeque_client/client'
+require 'barbeque_client/version'
+require 'barbeque_client/executor'
 
 begin
   require 'rails'
 rescue LoadError
 else
-  require 'barbeque/railtie'
+  require 'barbeque_client/railtie'
 end
 
 module BarbequeClient

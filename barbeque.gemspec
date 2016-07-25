@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'barbeque/version'
+require 'barbeque_client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'barbeque'
@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Barbeque client for Ruby}
   spec.description   = %q{Barbeque client for Ruby}
-  spec.homepage      = 'https://github.com/cookpad/barbeque'
+  spec.homepage      = 'https://github.com/cookpad/barbeque_client'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

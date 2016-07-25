@@ -1,4 +1,4 @@
-require 'barbeque/exponential_retry'
+require 'barbeque_client/exponential_retry'
 
 module BarbequeClient
   module Retryable

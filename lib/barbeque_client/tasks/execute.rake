@@ -11,7 +11,7 @@ namespace :barbeque do
 
   desc 'Start a fake barbeque API for development'
   task :runner do
-    require 'barbeque/runner'
+    require 'barbeque_client/runner'
     BarbequeClient::Runner.run!
   end
 end
