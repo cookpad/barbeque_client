@@ -1,6 +1,6 @@
-# BarbequeClient
+# BarbequeClient [![Build Status](https://travis-ci.org/cookpad/barbeque_client.svg?branch=master)](https://travis-ci.org/cookpad/barbeque_client)
 
-BarbequeClient client for Ruby.
+Barbeque client for Ruby.
 
 ## Installation
 
