@@ -36,9 +36,14 @@ module BarbequeClient
     end
 
     # @param [String] message_id - Job execution's message_id to check status
+    # @param optioanl [String] fields - Response fields specification for Garage
     # @return [Faraday::Response]
-    def execution(message_id:)
-      result = garage_client.get("/v1/job_executions/#{message_id}")
+    def execution(message_id:, fields: nil)
+      params = {}
+      if fields
+        params[:fields] = fields
+      end
+      result = garage_client.get("/v1/job_executions/#{message_id}", params)
       result.response
     end
 

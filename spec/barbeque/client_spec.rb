@@ -107,7 +107,7 @@ describe BarbequeClient::Client do
     let(:response) { double('Faraday::Response', body: { message_id: message_id, status: 'success' }) }
 
     before do
-      allow(garage_client).to receive(:get).with("/v1/job_executions/#{message_id}").and_return(result)
+      allow(garage_client).to receive(:get).with("/v1/job_executions/#{message_id}", {}).and_return(result)
     end
 
     it 'returns an execution' do
