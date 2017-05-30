@@ -8,6 +8,7 @@ module BarbequeClient
       application
       default_queue
       endpoint
+      tracing
     ]
   end
 end

@@ -39,3 +39,14 @@ execution.status     #=> "pending"
 message_id = "a3c653c1-335e-4d4d-a6f9-eb91c0253d02"
 BarbequeClient.status(message_id: message_id) #=> "success"
 ```
+
+### Distributed tracing
+Configure `tracing` option. Pick one of supported tracers.
+See more detail in https://github.com/cookpad/garage_client#tracing.
+
+```
+BarbequeClient.configure do |config|
+  # ...
+  config.tracing = { tracer: 'aws-xray', service: 'barbeque' }
+end
+```
