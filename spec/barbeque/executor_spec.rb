@@ -26,7 +26,7 @@ describe BarbequeClient::Executor do
       expect(test_job.queue_name).to eq(queue_name)
     end
 
-    context 'with non-Array args' do
+    context 'with non-Array args like Notification message' do
       let(:args) { { 'foo' => 'bar' } }
       it 'performs a job' do
         expect(test_job).to receive(:perform).with('foo' => 'bar')
