@@ -12,6 +12,10 @@ module BarbequeClient
       @queue_name = queue_name
 
       parsed_message = JSON.load(message)
+
+      # `arguments` in ActiveJob::Base.execute is expected as Array
+      # and it expands to the arguments for AJ::Base#perform.
+      # So when message is not an Array, it's converted to a 1-element Array.
       if parsed_message.is_a?(Array)
         @message = parsed_message
       else
