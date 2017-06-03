@@ -8,9 +8,15 @@ module BarbequeClient
     # @param [String] queue_name - barbeque's job_queues.name
     def initialize(job:, message:, message_id:, queue_name:)
       @job        = job
-      @message    = JSON.load(message)
       @message_id = message_id
       @queue_name = queue_name
+
+      parsed_message = JSON.load(message)
+      if parsed_message.is_a?(Array)
+        @message = parsed_message
+      else
+        @message = [parsed_message]
+      end
     end
 
     def run
