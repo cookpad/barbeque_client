@@ -19,7 +19,7 @@ describe BarbequeClient::Executor do
     end
 
     it 'performs a job' do
-      expect(test_job).to receive(:perform).with('foo', 'bar')
+      expect(test_job).to receive(:perform).with(*args)
       executor.run
 
       expect(test_job.job_id).to eq(message_id)
