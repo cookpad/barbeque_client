@@ -7,7 +7,7 @@ module BarbequeClient
       @application   = application
       @default_queue = default_queue
       @endpoint      = endpoint
-      @tracing       = tracing
+      @tracing       = tracing || {}
     end
 
     # @param [String] job     - Job name to enqueue.
