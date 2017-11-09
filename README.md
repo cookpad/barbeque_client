@@ -40,6 +40,21 @@ message_id = "a3c653c1-335e-4d4d-a6f9-eb91c0253d02"
 BarbequeClient.status(message_id: message_id) #=> "success"
 ```
 
+### With Rails
+
+Barbeque client has adapter for ActiveJob.
+
+```rb
+# config/environments/some_environment.rb
+Rails.application.config.active_job.queue_adapter = :barbeque
+```
+
+And everything will be ok. Don't forget to setup `config.application` and `config.endpoint` in somewhere.
+One more thing, `config.default_queue` option is meaningless with Rails.
+`default_queue` is the fallback option for enqueueing with not specified queue name.
+However, ActiveJob always set default queue as 'default' internally,
+there is no place to work on. So Please use [`queue_as`](http://api.rubyonrails.org/classes/ActiveJob/QueueName/ClassMethods.html#method-i-queue_as) when you want to use different queue name.
+
 ### Distributed tracing
 Configure `tracing` option. Pick one of supported tracers.
 See more detail in https://github.com/cookpad/garage_client#tracing.
