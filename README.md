@@ -51,9 +51,9 @@ Rails.application.config.active_job.queue_adapter = :barbeque
 
 And everything will be ok. Don't forget to setup `config.application` and `config.endpoint` in somewhere.
 One more thing, `config.default_queue` option is meaningless with Rails.
-`default_queue` is the fallback option for enqueueing with not specified queue name.
+`default_queue` is the fallback option for enqueueing without specified queue name.
 However, ActiveJob always set default queue as 'default' internally,
-there is no place to work on. So Please use [`queue_as`](http://api.rubyonrails.org/classes/ActiveJob/QueueName/ClassMethods.html#method-i-queue_as) when you want to use different queue name.
+there is no place to work on. So please use [`queue_as`](http://api.rubyonrails.org/classes/ActiveJob/QueueName/ClassMethods.html#method-i-queue_as) when you want to use different queue name.
 
 ### Distributed tracing
 Configure `tracing` option. Pick one of supported tracers.
