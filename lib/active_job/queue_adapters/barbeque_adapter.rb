@@ -6,6 +6,12 @@ module ActiveJob
         BarbequeAdapter.enqueue(job)
       end
 
+      def enqueue_at(job, timestamp)
+        raise NotImplementedError.new(
+          'Currently setting timestamp is not supported'
+        )
+      end
+
       class << self
         # Interface for ActiveJob 4.2
         def enqueue(job)
