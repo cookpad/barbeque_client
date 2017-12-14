@@ -6,6 +6,10 @@ module ActiveJob
         BarbequeAdapter.enqueue(job)
       end
 
+      def enqueue_at(job, timestamp)
+        BarbequeAdapter.enqueue_at(job, timestamp)
+      end
+
       class << self
         # Interface for ActiveJob 4.2
         def enqueue(job)
