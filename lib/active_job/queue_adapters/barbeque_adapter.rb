@@ -22,7 +22,7 @@ module ActiveJob
         end
 
         def enqueue_at(job, timestamp)
-          delay_seconds = timestamp - Time.now
+          delay_seconds = (timestamp - Time.now.to_f).round
           execution = BarbequeClient.enqueue(
             job:     job.class.to_s,
             message: ActiveJob::Arguments.serialize(job.arguments),
