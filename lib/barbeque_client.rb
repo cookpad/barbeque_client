@@ -23,12 +23,14 @@ module BarbequeClient
     # @param  [String] job     - Job name to enqueue.
     # @param  [Object] message - An object which is serializable as JSON.
     # @param  optional [String] queue - A queue name to enqueue a job.
+    # @param  optional [Integer] delay_seconds - Message timer of SQS.
     # @return [Hashie::Mash] resonse - { message_id: String, status: String }
-    def enqueue(job:, message:, queue: nil)
+    def enqueue(job:, message:, queue: nil, delay_seconds: nil)
       response = client.create_execution(
         job:     job,
         message: message,
         queue:   queue,
+        delay_seconds: delay_seconds,
       )
       response.body
     end
