@@ -24,6 +24,7 @@ describe TestJob do
         job:     'TestJob',
         message: args,
         queue:   'test_queue',
+        delay_seconds: nil,
       ).and_return(response)
       TestJob.perform_later(*args)
     end
@@ -34,10 +35,15 @@ describe TestJob do
     end
 
     context 'with timestamp set' do
-      it 'is not supported' do
-        expect {
-          TestJob.set(wait: 1.week).perform_later
-        }.to raise_error(NotImplementedError)
+      it 'enqueues a job to barbeque with delay_seconds' do
+        wait = 10.minutes
+        expect(client).to receive(:create_execution).with(
+          job:     'TestJob',
+          message: args,
+          queue:   'test_queue',
+          delay_seconds: wait.to_i,
+        ).and_return(response)
+        TestJob.set(wait: wait).perform_later(*args)
       end
     end
   end
