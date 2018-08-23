@@ -23,6 +23,7 @@ describe BarbequeClient::Client do
           job:         job,
           message:     message,
           queue:       default_queue,
+          delay_seconds: nil,
         ).and_return(result)
         client.create_execution(job: job, message: message)
       end
@@ -37,6 +38,7 @@ describe BarbequeClient::Client do
             job:         job,
             message:     message,
             queue:       queue,
+            delay_seconds: nil,
           ).and_return(result)
           client.create_execution(job: job, message: message, queue: queue)
         end
