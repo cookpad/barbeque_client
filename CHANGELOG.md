@@ -1,3 +1,10 @@
+## v0.10.0 (2018-08-24)
+- Add documentation for ActiveJob adapter
+- Drop support for Ruby 2.1
+- Support delay_seconds parameter
+  - Also supports ActiveJob's enqueue_at method
+  - Requires Barbeque >= v2.5.0
+
 ## v0.9.1 (2017-06-19)
 - Fix NoMethodError in distributed tracing
 
