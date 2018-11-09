@@ -17,6 +17,7 @@ BarbequeClient.configure do |config|
   config.application   = 'cookpad'
   config.default_queue = 'default'
   config.endpoint      = 'https://barbeque.example.com'
+  config.headers = { 'Host' => 'barbeque' } # optional
 end
 ```
 

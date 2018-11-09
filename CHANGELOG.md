@@ -1,3 +1,6 @@
+## v0.10.1 (2018-11-09)
+- Add support for custom HTTP headers
+
 ## v0.10.0 (2018-08-24)
 - Add documentation for ActiveJob adapter
 - Drop support for Ruby 2.1
