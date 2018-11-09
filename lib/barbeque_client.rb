@@ -48,6 +48,7 @@ module BarbequeClient
         default_queue: config.default_queue,
         endpoint:      config.endpoint,
         tracing:       config.tracing,
+        headers: config.headers,
       )
     end
   end

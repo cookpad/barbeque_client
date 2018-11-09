@@ -3,11 +3,12 @@ require 'json'
 
 module BarbequeClient
   class Client
-    def initialize(application:, default_queue:, endpoint:, tracing: {})
+    def initialize(application:, default_queue:, endpoint:, tracing: {}, headers: nil)
       @application   = application
       @default_queue = default_queue
       @endpoint      = endpoint
       @tracing       = tracing || {}
+      @headers = headers
     end
 
     # @param [String] job     - Job name to enqueue.
@@ -59,6 +60,9 @@ module BarbequeClient
     def garage_client_option
       option = { endpoint: @endpoint, path_prefix: '/' }
       option[:tracing] = @tracing if @tracing[:tracer]
+      if @headers
+        option[:headers] = @headers
+      end
       option
     end
   end
