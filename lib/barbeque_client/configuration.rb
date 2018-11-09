@@ -9,6 +9,7 @@ module BarbequeClient
       default_queue
       endpoint
       tracing
+      headers
     ]
   end
 end
