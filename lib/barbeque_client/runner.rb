@@ -53,7 +53,7 @@ module BarbequeClient
       status = if wait_thr.nil?
                  'pending'
                elsif wait_thr.alive?
-                 'working'
+                 'running'
                else
                  if wait_thr.value.exitstatus == 0
                    'success'
