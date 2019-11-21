@@ -1,3 +1,6 @@
+## v0.10.2 (2019-11-21)
+- Use 'running' instead of 'working' in mock API responses
+
 ## v0.10.1 (2018-11-09)
 - Add support for custom HTTP headers
 
