@@ -22,7 +22,6 @@ module BarbequeClient
         "BARBEQUE_MESSAGE_ID=#{message_id}",
         "BARBEQUE_JOB=#{params['job']}", "BARBEQUE_MESSAGE=#{params['message']}",
         "BARBEQUE_RETRY_COUNT=0",
-        in: :close
       )
       Runner.messages[message_id] = Process.detach(pid)
 
@@ -38,7 +37,6 @@ module BarbequeClient
         "BARBEQUE_MESSAGE_ID=#{message_id}",
         "BARBEQUE_JOB=#{params['job']}", "BARBEQUE_MESSAGE=#{params['message'].to_json}",
         "BARBEQUE_RETRY_COUNT=0",
-        in: :close
       )
       Runner.messages[message_id] = Process.detach(pid)
 
