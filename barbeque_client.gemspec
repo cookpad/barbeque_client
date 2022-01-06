@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'garage_client'
-  spec.add_development_dependency 'bundler', '~> 1.11'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rails', '~> 5.1'
   spec.add_development_dependency 'rake', '~> 10.0'

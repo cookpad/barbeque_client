@@ -1,4 +1,4 @@
-# BarbequeClient [![Build Status](https://travis-ci.org/cookpad/barbeque_client.svg?branch=master)](https://travis-ci.org/cookpad/barbeque_client)
+# BarbequeClient [![Build Status](https://github.com/cookpad/barbeque_client/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/cookpad/barbeque_client/actions/workflows/ci.yml)
 
 Barbeque client for Ruby.
 
