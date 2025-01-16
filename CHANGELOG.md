@@ -1,3 +1,7 @@
+## v0.11.0 (2025-01-16)
+- Update BarbequeAdapter for Rails 7.2 compatibility
+- Drop support for Ruby 2.6, 2.7, and 3.0
+
 ## v0.10.2 (2019-11-21)
 - Use 'running' instead of 'working' in mock API responses
 
